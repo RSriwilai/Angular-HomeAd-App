@@ -1,0 +1,15 @@
+* {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+nav {
+  background-color: #3339;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 28px;
+}
+.span-ad {
+  color: rgba(0, 157, 229, 255);
+}

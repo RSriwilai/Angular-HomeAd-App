@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Hitta lediga lägenheter</h1>
+      <p class="card-text">
+        Vårt erbjudande av hyresbostäder är brett. Vi välkomnar dig att hitta
+        ditt nya hem hos oss!
+      </p>
+      <div class="col">
+        <div class="form-group has-search">
+          <span class="form-control-feedback"
+            ><bi class="big" name="search"></bi
+          ></span>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            placeholder="Sök bostad"
+            (keyup.Enter)="searchApartment(box.value)"
+            #box
+          />
+        </div>
+        <p>{{ searchTerm }}</p>
+      </div>
+    </div>
+  </div>
+</div>
