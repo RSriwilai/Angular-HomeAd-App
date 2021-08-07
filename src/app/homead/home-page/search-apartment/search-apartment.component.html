@@ -9,10 +9,16 @@
       <div class="col">
         <div class="form-group has-search">
           <span class="form-control-feedback"
-            ><bi class="big" name="search"></bi
+            ><bi
+              (click)="searchApartment(box.value)"
+              style="cursor: pointer"
+              class="big"
+              name="search"
+            ></bi
           ></span>
           <input
             type="text"
+            spellcheck="false"
             class="form-control form-control-lg"
             placeholder="Sök bostad"
             (keyup.Enter)="searchApartment(box.value)"

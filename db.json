@@ -1,0 +1,35 @@
+{
+  "apartments": [
+    { "id": 1, 
+      "photoPath": "assets/img/apartment1.jpg",
+      "city": "Göteborg", 
+      "address": "Karl Gustavsgatan 42", 
+      "kvm": 55,
+      "rooms": 2,
+      "rentalCost": 6000,
+      "availableDate": "2021-12-01", 
+      "publicationDate": "2021-08-06" 
+    },
+    { "id": 2, 
+      "photoPath": "assets/img/apartment2.jpg",
+      "city": "Göteborg", 
+      "address": "Slottsskogsgatan 8", 
+      "kvm": 63,
+      "rooms": 2,
+      "rentalCost": 7500,
+      "availableDate": "2022-01-01", 
+      "publicationDate": "2021-08-06" 
+    },
+    { "id": 3, 
+      "photoPath": "assets/img/apartment3.jpg",
+      "city": "Göteborg", 
+      "address": "Surbrunnsgatan 4", 
+      "kvm": 58,
+      "rooms": 2,
+      "rentalCost": 6500,
+      "availableDate": "2022-04-01", 
+      "publicationDate": "2021-08-06" 
+    }
+  
+]}
+
