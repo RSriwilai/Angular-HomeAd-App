@@ -1,0 +1,19 @@
+<div class="card-holder" *ngFor="let apartment of apartments">
+  <h5 class="card-title">{{ apartment.address }}</h5>
+  <div class="card">
+    <img
+      class="card-img-top"
+      [src]="apartment.photoPath"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group">{{ apartment.city }}</li>
+        <li class="list-group">Inflytt: {{ apartment.availableDate }}</li>
+        <li class="list-group" style="font-weight: bold">
+          {{ apartment.rentalCost }} kr/mån
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
