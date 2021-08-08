@@ -1,12 +1,12 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <h1 class="card-title">Hitta lediga lägenheter</h1>
-      <p class="card-text">
+      <h1>Hitta lediga lägenheter</h1>
+      <p>
         Vårt erbjudande av hyresbostäder är brett. Vi välkomnar dig att hitta
         ditt nya hem hos oss!
       </p>
-      <div class="col">
+      <!-- <div class="col">
         <div class="form-group has-search">
           <span class="form-control-feedback"
             ><bi
@@ -26,7 +26,29 @@
           />
         </div>
         <p>{{ searchTerm }}</p>
-      </div>
+      </div> -->
+
+      <form>
+        <mat-form-field class="style-width">
+          <bi style="cursor: pointer" class="big" name="search"></bi>
+          <input
+            class="mat-style"
+            matInput
+            type="text"
+            [matAutocomplete]="auto"
+            style="color: rgb(82, 82, 82); font-weight: 400; font-size: 16px"
+            spellcheck="false"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              style="height: 30px"
+              *ngFor="let option of options"
+              [value]="option"
+              >{{ option }}</mat-option
+            >
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
     </div>
   </div>
 </div>

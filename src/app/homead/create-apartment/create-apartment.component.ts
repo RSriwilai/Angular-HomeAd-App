@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Apartment } from '../models/apartment.model';
 
@@ -8,15 +9,27 @@ import { Apartment } from '../models/apartment.model';
   styleUrls: ['./create-apartment.component.css'],
 })
 export class CreateApartmentComponent implements OnInit {
+  counter(i: number) {
+    return new Array(i);
+  }
+
   apartment: Apartment;
-  rooms: any;
-  kvm: any;
+
   datePickerConfiq: Partial<BsDatepickerConfig>;
   bsValue: Date = new Date();
 
   constructor() {
-    this.rooms = Array.from({ length: 10 }, (v, k) => k + 1);
-    this.kvm = Array.from({ length: 200 }, (v, k) => k + 1);
+    this.apartment = {
+      id: null,
+      address: null,
+      city: null,
+      rooms: null,
+      kvm: null,
+      rentalCost: null,
+      availableDate: null,
+      publicationDate: null,
+      photoUrl: null,
+    };
     this.datePickerConfiq = Object.assign(
       {},
       {
@@ -29,4 +42,8 @@ export class CreateApartmentComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  saveApartment(apartmentForm: NgForm): void {
+    console.log(apartmentForm.value);
+  }
 }

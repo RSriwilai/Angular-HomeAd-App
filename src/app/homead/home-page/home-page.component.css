@@ -9,5 +9,11 @@
 
 .search-apartment {
   position: relative;
-  top: 35%;
+  top: 20%;
+}
+
+@media (min-width: 992px) {
+  .search-apartment {
+    top: 35%;
+  }
 }

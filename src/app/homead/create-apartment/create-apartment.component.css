@@ -3,13 +3,16 @@
   top: 150px;
 }
 
+h1 {
+  margin: unset;
+}
+
 .readonly-background {
   background-color: transparent;
 }
 
 .card-header {
   background-color: rgba(0, 157, 229, 255);
-  margin-bottom: 50px;
 }
 
 .card-footer {

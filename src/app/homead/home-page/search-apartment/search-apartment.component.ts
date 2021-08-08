@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Icons } from 'ng-bootstrap-icons/bootstrap-icons/icons.provider';
+import { CITIES } from './mock-cities';
 
 @Component({
   selector: 'app-search-apartment',
@@ -8,15 +9,14 @@ import { Icons } from 'ng-bootstrap-icons/bootstrap-icons/icons.provider';
 })
 export class SearchApartmentComponent implements OnInit {
   search: Icons;
-  searchTerm: string;
-  constructor() {
-    this.searchTerm = '';
-  }
+  options = CITIES;
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  searchApartment(value: string) {
-    this.searchTerm += value;
-    console.log(this.searchTerm);
-  }
+  // searchApartment(value: string) {
+  //   this.searchTerm += value;
+  //   console.log(this.searchTerm);
+  // }
 }

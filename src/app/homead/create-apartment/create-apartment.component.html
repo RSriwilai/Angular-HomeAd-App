@@ -1,26 +1,33 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <h5>skapa annons</h5>
+      <h1>skapa annons</h1>
     </div>
     <div class="card-body">
-      <form>
+      <!-- {{ apartmentForm.value | json }} -->
+      Our apartment model: {{ apartment | json }}
+      <p></p>
+      <form #apartmentForm="ngForm" (ngSubmit)="saveApartment(apartmentForm)">
         <div class="form-group form-row">
           <div class="col">
             <label for="address">Adress</label>
             <input
+              name="address"
               type="text"
               class="form-control"
               id="address"
               placeholder="Fyll i adress"
+              [(ngModel)]="apartment.address"
             />
           </div>
           <div class="col">
             <label for="city">Ort</label>
             <input
+              name="city"
               type="text"
               class="form-control"
               id="city"
+              [(ngModel)]="apartment.city"
               placeholder="Fyll i ort"
             />
           </div>
@@ -29,19 +36,31 @@
         <div class="form-group form-row">
           <div class="col">
             <label for="rooms">Antal rum</label>
-            <select class="form-control" name="rooms" id="rooms">
+            <select
+              class="form-control"
+              name="rooms"
+              id="rooms"
+              [(ngModel)]="apartment.rooms"
+            >
               <option selected>Välj...</option>
-              <option *ngFor="let room of rooms">
-                {{ room }}
+              <option *ngFor="let in of counter(10); let i = index">
+                {{ i + 1 }}
               </option>
             </select>
           </div>
 
           <div class="col">
             <label for="kvm">Kvm</label>
-            <select class="form-control" name="kvm" id="kvm">
+            <select
+              class="form-control"
+              name="kvm"
+              id="kvm"
+              [(ngModel)]="apartment.kvm"
+            >
               <option selected>Välj kvm...</option>
-              <option *ngFor="let size of kvm">{{ size }}</option>
+              <option *ngFor="let in of counter(171); let i = index">
+                {{ i + 30 }}
+              </option>
             </select>
           </div>
           <div class="col">
@@ -51,6 +70,8 @@
               class="form-control"
               id="rentalCost"
               placeholder="Fyll i månadshyra"
+              name="rentalCost"
+              [(ngModel)]="apartment.rentalCost"
             />
           </div>
         </div>
@@ -59,6 +80,8 @@
           <label for="availableDate">Inflyttningsdatum</label>
           <input
             id="availableDate"
+            name="availableDate"
+            [(ngModel)]="apartment.availableDate"
             type="text"
             bsDatepicker
             [bsConfig]="datePickerConfiq"
@@ -69,7 +92,10 @@
         <div class="form-group">
           <label for="publicationDate">Publiceringsdatum</label>
           <input
-            readonly
+            bsDatepicker
+            [bsConfig]="datePickerConfiq"
+            name="publicationDate"
+            [(ngModel)]="apartment.publicationDate"
             id="publicationDate"
             class="form-control readonly-background"
             [value]="bsValue | date: 'yyyy-MM-dd'"
@@ -77,8 +103,15 @@
         </div>
 
         <div class="form-group">
-          <label for="photoPath">Photo Path</label>
-          <input type="text" class="form-control" id="photoPath" />
+          <label for="photoPath">Photo Url</label>
+          <input
+            type="text"
+            class="form-control"
+            id="photoPath"
+            name="photoPath"
+            [(ngModel)]="apartment.photoUrl"
+            placeholder="Enter photo link"
+          />
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Skicka</button>
