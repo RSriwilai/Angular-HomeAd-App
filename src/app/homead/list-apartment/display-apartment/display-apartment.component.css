@@ -21,4 +21,7 @@
     flex-direction: row;
     cursor: pointer;
   }
+  .publication-date {
+    text-align: end;
+  }
 }

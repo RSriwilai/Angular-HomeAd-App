@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Apartment } from './models/apartment.model';
 import { throwError } from 'rxjs';
+import { Apartment } from '../homead/models/apartment.model';
 
 @Injectable()
 export class ApartmentService {
