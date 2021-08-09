@@ -18,6 +18,7 @@
             style="color: rgb(82, 82, 82); font-weight: 400; font-size: 16px"
             spellcheck="false"
             (keyup.enter)="onSearch()"
+            oninput="this.value = this.value.toLowerCase()"
           />
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option
