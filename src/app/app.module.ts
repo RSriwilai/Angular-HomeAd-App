@@ -4,7 +4,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { IconsModule } from './icons/icons.module';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
@@ -44,6 +44,7 @@ import { ApartmentService } from './shared/apartment.service';
     BsDatepickerModule.forRoot(),
     MatAutocompleteModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [ApartmentService],
   bootstrap: [AppComponent],

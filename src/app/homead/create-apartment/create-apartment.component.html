@@ -7,22 +7,41 @@
       <!-- {{ apartmentForm.value | json }} -->
       Our apartment model: {{ apartment | json }}
       <p></p>
-      <form #apartmentForm="ngForm" (ngSubmit)="saveApartment(apartmentForm)">
+      <form
+        spellcheck="false"
+        #apartmentForm="ngForm"
+        (ngSubmit)="saveApartment(apartmentForm)"
+      >
         <div class="form-group form-row">
-          <div class="col">
+          <div
+            class="col"
+            [class.has-error]="address.invalid && address.touched"
+            [class.has-success]="address.valid"
+          >
             <label for="address">Adress</label>
             <input
+              required
               name="address"
               type="text"
               class="form-control"
               id="address"
               placeholder="Fyll i adress"
               [(ngModel)]="apartment.address"
+              #address="ngModel"
             />
+            <span class="help-block" *ngIf="address.invalid && address.touched"
+              >*Du måste ange adress</span
+            >
           </div>
-          <div class="col">
+          <div
+            class="col"
+            [class.has-error]="city.invalid && city.touched"
+            [class.has-success]="city.valid"
+          >
             <label for="city">Ort</label>
             <input
+              required
+              #city="ngModel"
               name="city"
               type="text"
               class="form-control"
@@ -30,42 +49,63 @@
               [(ngModel)]="apartment.city"
               placeholder="Fyll i ort"
             />
+            <span class="help-block" *ngIf="city.invalid && city.touched"
+              >*Du måste ange ort</span
+            >
           </div>
         </div>
 
         <div class="form-group form-row">
-          <div class="col">
+          <div class="col" [class.has-error]="rooms.invalid && rooms.touched">
             <label for="rooms">Antal rum</label>
             <select
+              required
+              #rooms="ngModel"
               class="form-control"
               name="rooms"
               id="rooms"
               [(ngModel)]="apartment.rooms"
             >
-              <option selected>Välj...</option>
               <option *ngFor="let in of counter(10); let i = index">
                 {{ i + 1 }}
               </option>
             </select>
+            <span class="help-block" *ngIf="rooms.touched && rooms.invalid"
+              >*Du måste ange antal rum</span
+            >
           </div>
 
-          <div class="col">
+          <div
+            class="col"
+            [class.has-error]="kvm.invalid && kvm.touched"
+            [class.has-success]="kvm.valid"
+          >
             <label for="kvm">Kvm</label>
             <select
+              required
+              #kvm="ngModel"
               class="form-control"
               name="kvm"
               id="kvm"
               [(ngModel)]="apartment.kvm"
             >
-              <option selected>Välj kvm...</option>
               <option *ngFor="let in of counter(171); let i = index">
                 {{ i + 30 }}
               </option>
             </select>
+            <span class="help-block" *ngIf="kvm.invalid && kvm.touched"
+              >*Du måste ange kvm</span
+            >
           </div>
-          <div class="col">
+          <div
+            class="col"
+            [class.has-error]="rentalCost.invalid && rentalCost.touched"
+            [class.has-success]="rentalCost.valid"
+          >
             <label for="rentalCost">Månadshyra</label>
             <input
+              #rentalCost="ngModel"
+              required
               type="text"
               class="form-control"
               id="rentalCost"
@@ -73,12 +113,23 @@
               name="rentalCost"
               [(ngModel)]="apartment.rentalCost"
             />
+            <span
+              class="help-block"
+              *ngIf="rentalCost.invalid && rentalCost.touched"
+              >*Du måste ange månadshyra</span
+            >
           </div>
         </div>
 
-        <div class="form-group">
+        <div
+          class="form-group"
+          [class.has-error]="availableDate.invalid && availableDate.touched"
+          [class.has-success]="availableDate.valid"
+        >
           <label for="availableDate">Inflyttningsdatum</label>
           <input
+            #availableDate="ngModel"
+            required
             id="availableDate"
             name="availableDate"
             [(ngModel)]="apartment.availableDate"
@@ -87,11 +138,22 @@
             [bsConfig]="datePickerConfiq"
             class="form-control"
           />
+          <span
+            class="help-block"
+            *ngIf="availableDate.invalid && availableDate.touched"
+            >*Du måste ange inflyttningsdatum</span
+          >
         </div>
 
-        <div class="form-group">
+        <div
+          class="form-group"
+          [class.has-error]="publicationDate.invalid && publicationDate.touched"
+          [class.has-success]="publicationDate.valid"
+        >
           <label for="publicationDate">Publiceringsdatum</label>
           <input
+            #publicationDate="ngModel"
+            required
             bsDatepicker
             [bsConfig]="datePickerConfiq"
             name="publicationDate"
@@ -100,21 +162,32 @@
             class="form-control readonly-background"
             [value]="bsValue | date: 'yyyy-MM-dd'"
           />
+          <span
+            class="help-block"
+            *ngIf="publicationDate.invalid && publicationDate.touched"
+            >*Du måste ange publiceringsdatum</span
+          >
         </div>
 
         <div class="form-group">
-          <label for="photoPath">Photo Url</label>
+          <label for="photoPath">Bild url</label>
           <input
             type="text"
             class="form-control"
             id="photoPath"
             name="photoPath"
             [(ngModel)]="apartment.photoUrl"
-            placeholder="Enter photo link"
+            placeholder="Ange bildens url"
           />
         </div>
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Skicka</button>
+          <button
+            [disabled]="!apartmentForm.form.valid"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Skicka
+          </button>
         </div>
       </form>
     </div>

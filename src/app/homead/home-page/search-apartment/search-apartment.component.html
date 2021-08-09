@@ -6,45 +6,25 @@
         Vårt erbjudande av hyresbostäder är brett. Vi välkomnar dig att hitta
         ditt nya hem hos oss!
       </p>
-      <!-- <div class="col">
-        <div class="form-group has-search">
-          <span class="form-control-feedback"
-            ><bi
-              (click)="searchApartment(box.value)"
-              style="cursor: pointer"
-              class="big"
-              name="search"
-            ></bi
-          ></span>
-          <input
-            type="text"
-            spellcheck="false"
-            class="form-control form-control-lg"
-            placeholder="Sök bostad"
-            (keyup.Enter)="searchApartment(box.value)"
-            #box
-          />
-        </div>
-        <p>{{ searchTerm }}</p>
-      </div> -->
-
       <form>
         <mat-form-field class="style-width">
           <bi style="cursor: pointer" class="big" name="search"></bi>
           <input
+            [formControl]="myControl"
             class="mat-style"
             matInput
             type="text"
             [matAutocomplete]="auto"
             style="color: rgb(82, 82, 82); font-weight: 400; font-size: 16px"
             spellcheck="false"
+            (keyup.enter)="onSearch()"
           />
-          <mat-autocomplete #auto="matAutocomplete">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option
               style="height: 30px"
-              *ngFor="let option of options"
+              *ngFor="let option of filteredOptions | async"
               [value]="option"
-              >{{ option }}</mat-option
+              >{{ option.name }}</mat-option
             >
           </mat-autocomplete>
         </mat-form-field>

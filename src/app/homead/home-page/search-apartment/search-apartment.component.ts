@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Icons } from 'ng-bootstrap-icons/bootstrap-icons/icons.provider';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { Cities } from '../../models/cities.model';
 import { CITIES } from './mock-cities';
 
 @Component({
@@ -10,13 +14,30 @@ import { CITIES } from './mock-cities';
 export class SearchApartmentComponent implements OnInit {
   search: Icons;
   options = CITIES;
-
+  myControl = new FormControl();
+  filteredOptions: Observable<Cities[]>;
+  searchTerm: any;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value))
+    );
+  }
 
-  // searchApartment(value: string) {
-  //   this.searchTerm += value;
-  //   console.log(this.searchTerm);
-  // }
+  private _filter(value: string): Cities[] {
+    const filterValue = value;
+    return this.options.filter((option) =>
+      option.name.toLowerCase().includes(filterValue)
+    );
+  }
+
+  displayFn(city: Cities) {
+    return city ? city.name : undefined;
+  }
+
+  onSearch() {
+    console.log(this.myControl.value);
+  }
 }

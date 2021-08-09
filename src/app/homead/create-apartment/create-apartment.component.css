@@ -18,3 +18,7 @@ h1 {
 .card-footer {
   margin-top: 50px;
 }
+
+.help-block {
+  color: red;
+}
